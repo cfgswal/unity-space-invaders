@@ -5,21 +5,27 @@ public class ControlAlien : MonoBehaviour
 {
 	// Conexión al marcador, para poder actualizarlo
 	public GameObject marcador;
+	public GeneradorAliens ga;
+	public GameObject alien;
 
 	// Por defecto, 100 puntos por cada alien
 	public int puntos = 100;
+	private float velocidad = 2f;
+
 
 	// Use this for initialization
 	void Start ()
 	{
 		// Localizamos el objeto que contiene el marcador
 		marcador = GameObject.Find ("Marcador");
+		alien = GameObject.Find ("Untagged");
 	}
 	
 	// Update is called once per frame
 	void Update ()
+
 	{
-	
+		alien.Translate (Vector2.right * velocidad);
 	}
 
 	void OnCollisionEnter2D (Collision2D coll)

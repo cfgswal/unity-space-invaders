@@ -20,7 +20,7 @@ public class GeneradorAliens : MonoBehaviour
 	
 	}
 
-	void generarAliens (int filas, int columnas, float espacioH, float espacioV, float escala = 1.0f)
+	public void generarAliens (int filas, int columnas, float espacioH, float espacioV, float escala = 1.0f)
 	{
 		/* Creamos una rejilla de aliens a partir del punto de origen
 		 * 
