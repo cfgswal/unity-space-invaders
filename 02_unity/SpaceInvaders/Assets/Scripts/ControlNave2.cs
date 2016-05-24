@@ -2,9 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class ControlNave : MonoBehaviour
-{
-
+public class ControlNave2 : MonoBehaviour {
 	// Velocidad a la que se desplaza la nave (medido en u/s)
 	private float velocidad = 20f;
 
@@ -20,12 +18,11 @@ public class ControlNave : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
-
 	{
 
 		// Objeto para reproducir la explosión de un alien
@@ -39,7 +36,7 @@ public class ControlNave : MonoBehaviour
 		float limiteDer = 1.0f * distanciaHorizontal;
 
 		// Tecla: Izquierda
-		if (Input.GetKey (KeyCode.A)) {
+		if (Input.GetKey (KeyCode.LeftArrow)) {
 
 			// Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado
 			if (transform.position.x > limiteIzq) {
@@ -50,7 +47,7 @@ public class ControlNave : MonoBehaviour
 		}
 
 		// Tecla: Derecha
-		if (Input.GetKey (KeyCode.D)) {
+		if (Input.GetKey (KeyCode.RightArrow)) {
 
 			// Nos movemos a la derecha hasta llegar al límite para entrar por el otro lado
 			if (transform.position.x < limiteDer) {
@@ -61,7 +58,7 @@ public class ControlNave : MonoBehaviour
 		}
 
 		// Disparo
-		if (Input.GetKeyDown (KeyCode.S)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			disparar ();
 		}
 	}
@@ -92,7 +89,7 @@ public class ControlNave : MonoBehaviour
 
 		// Necesitamos saber contra qué hemos chocado
 		if (coll.gameObject.tag == "Alien") {
-			
+
 			// Sonido de explosión
 			GetComponent<AudioSource> ().Play ();
 
@@ -101,7 +98,7 @@ public class ControlNave : MonoBehaviour
 			Destroy (gameObject);
 			SceneManager.LoadScene (0);
 
-		} 
+		}
 	}
-
 }
+
