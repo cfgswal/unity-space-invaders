@@ -14,22 +14,21 @@ public class ControlNave : MonoBehaviour
 	// Acceso al prefab del disparo
 	public Rigidbody2D disparo;
 
-	// Objeto para reproducir la explosión de un alien
-	private GameObject efectoExplosion;
+	// Objeto para reproducir la explosión de la Nave
+	public Rigidbody2D explosionAzul;
+
 
 	// Use this for initialization
 	void Start ()
 	{
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 
 	{
-
-		// Objeto para reproducir la explosión de un alien
-		efectoExplosion = GameObject.Find ("EfectoExplosion");
+		
 
 		// Calculamos la anchura visible de la cámara en pantalla
 		float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
@@ -66,6 +65,8 @@ public class ControlNave : MonoBehaviour
 		}
 	}
 
+
+
 	void disparar ()
 	{
 		// Hacemos copias del prefab del disparo y las lanzamos
@@ -86,22 +87,16 @@ public class ControlNave : MonoBehaviour
 		d.AddForce (Vector2.up * fuerza, ForceMode2D.Impulse);	
 		c.AddForce (Vector2.up * fuerza, ForceMode2D.Impulse);	
 	}
+
 	void OnCollisionEnter2D (Collision2D coll)
 	{
-		// Detectar la colisión entre el nave y otros elementos
-
-		// Necesitamos saber contra qué hemos chocado
-		if (coll.gameObject.tag == "Alien") {
-			
-			// Sonido de explosión
-			GetComponent<AudioSource> ().Play ();
-
-			// El alien desaparece (no hace falta retraso para la explosión, está en otro objeto)
-			efectoExplosion.GetComponent<AudioSource> ().Play ();
+		if (coll.gameObject.tag == "Alien1" || coll.gameObject.tag == "Alien2" || coll.gameObject.tag == "Alien3" || coll.gameObject.tag == "Alien4") {
+			//explotar nave
+			Rigidbody2D e = (Rigidbody2D)Instantiate (explosionAzul, transform.position, transform.rotation);
 			Destroy (gameObject);
-			SceneManager.LoadScene (0);
 
-		} 
+			SceneManager.LoadScene (3);
+		}
 	}
 
 }

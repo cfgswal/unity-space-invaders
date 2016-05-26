@@ -7,6 +7,9 @@ public class GeneradorAliens : MonoBehaviour
 
 	// Publicamos la variable para conectarla desde el editor
 	public Rigidbody2D prefabAlien1;
+	public Rigidbody2D prefabAlien2;
+	public Rigidbody2D prefabAlien3;
+	public Rigidbody2D prefabAlien4;
 
 	// Referencia para guardar una matriz de objetos
 	private Rigidbody2D[,] aliens;
@@ -14,6 +17,8 @@ public class GeneradorAliens : MonoBehaviour
 	// Tamaño de la invasión alienígena
 	private const int FILAS = 4;
 	private const int COLUMNAS = 7;
+
+
 
 	// Enumeración para expresar el sentido del movimiento
 	private enum direccion { IZQ, DER };
@@ -36,6 +41,7 @@ public class GeneradorAliens : MonoBehaviour
 	{
 		// Rejilla de 4x7 aliens
 		generarAliens (FILAS, COLUMNAS, 1.5f, 1.0f);
+
 
 		// Calculamos la anchura visible de la cámara en pantalla
 		float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
@@ -90,7 +96,7 @@ public class GeneradorAliens : MonoBehaviour
 
 		// Si no quedan aliens, hemos terminado
 		if( numAliens == 0 ) {
-			SceneManager.LoadScene ("Nivel1");
+			SceneManager.LoadScene (4);
 		}
 
 		// Si al menos un alien ha tocado el borde, todo el pack cambia de rumbo
@@ -133,6 +139,21 @@ public class GeneradorAliens : MonoBehaviour
 		for (int i = 0; i < filas; i++) {
 			for (int j = 0; j < columnas; j++) {
 
+				if (i==0) {
+					prefabAlien1 = prefabAlien1;
+				}
+				else if (i==1) {
+					prefabAlien1 = prefabAlien2;
+
+				}
+				else if (i==2) {
+					prefabAlien1 = prefabAlien3;
+
+				}
+				else if (i==3) {
+					prefabAlien1 = prefabAlien4;
+
+				}
 				// Posición de cada alien
 				Vector2 posicion = new Vector2 (origen.x + (espacioH * j), origen.y + (espacioV * i));
 

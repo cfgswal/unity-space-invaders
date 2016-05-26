@@ -27,4 +27,16 @@ public class MenuPrincipal : MonoBehaviour {
 
 	}
 
+	public void menuinicio(){
+	
+		SceneManager.LoadScene (0);
+	}
+
+	public void salir(){
+
+		Application.Quit();
+	}
+
+
+
 }
